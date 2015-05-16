@@ -7,7 +7,7 @@ describe ClassyPlivo::RestAPI do
   end
 
   describe '#plivo_api' do
-    it "returns a matching plivo api" do
+    it "returns a matching Plivo::RestAPI" do
       plivo_api = Plivo::RestAPI.new(*@arguments)
       assert_equal extract_api_attrs(plivo_api), extract_api_attrs(@classy_api.plivo_api)
     end

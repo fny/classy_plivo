@@ -7,8 +7,7 @@ module ClassyPlivo
     NoPayloadKeyError = Class.new(NoMethodError)
 
     def initialize(response)
-      @http_status = response[0]
-      @payload = response[1]
+      @http_status, @payload = response
     end
 
     # True if 4XX or 5XX status code is received
