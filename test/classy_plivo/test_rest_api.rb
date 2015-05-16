@@ -13,9 +13,18 @@ describe ClassyPlivo::RestAPI do
     end
   end
 
-  describe "calling a Plivo::RestAPI method that exists" do
+  describe "calling a Plivo::RestAPI method that returns a response-like array" do
     it "returns the response wrapped in a ClassyPlivo::Response" do
       assert @classy_api.get_message.is_a?(ClassyPlivo::Response)
+    end
+  end
+
+  describe "calling a Plivo::RestAPI method does not return a response-like array" do
+    it "returns the response wrapped in a ClassyPlivo::Response" do
+      new_auth_token = 'NEW_AUTH_TOKEN'
+      result_from_assignment = (@classy_api.auth_token = new_auth_token)
+      assert_equal new_auth_token, result_from_assignment
+      assert_equal new_auth_token, @classy_api.auth_token
     end
   end
 
